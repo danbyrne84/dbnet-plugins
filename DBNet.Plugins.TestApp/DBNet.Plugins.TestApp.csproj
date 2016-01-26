@@ -47,6 +47,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DBNet.Plugins.Example\DBNet.Plugins.Example.csproj">
+      <Project>{2FCD32BD-A487-496E-AEE5-CBCB927B81E1}</Project>
+      <Name>DBNet.Plugins.Example</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DBNet.Plugins\DBNet.Plugins.csproj">
       <Project>{cfcb7d69-92f4-4513-a117-ad8bff328e7a}</Project>
       <Name>DBNet.Plugins</Name>
@@ -56,6 +60,10 @@
     <Folder Include="plugins\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

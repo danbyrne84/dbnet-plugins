@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
-
+using DBNet.Plugins.Management;
 namespace DBNet.Plugins.TestApp
 {
     class Program
@@ -24,7 +24,18 @@ namespace DBNet.Plugins.TestApp
             if (plugins.Any() == false) { throw new ApplicationException($"no plugins found in assembly at ${exePath}"); }
 
             // initialize them, or check something about them in their manifest first
-            plugins.ForEach(plugin => plugin.Initialize());
+            plugins.ForEach(plugin =>
+            {
+                plugin.Initialize();
+
+                var handlers = plugin.GetHandlers().ToList();
+                if (!handlers.Any()) return;
+
+                Console.WriteLine("Registered Handlers:");
+                Console.WriteLine(string.Join(",", handlers.Select(x => x.Name).ToArray()));
+            });
+
+            Console.ReadKey();
         }
     }
 }

@@ -1,0 +1,8 @@
+﻿{
+  "metaData": {
+    "name": "Example plugin",
+    "description": "Hello World",
+    "entryPoint": "DBNet.Plugins.Example.dll",
+    "handlers": [ "HelloWorldCommand","HelloWorldQuery","HelloWorldEvent" ]
+  }
+}

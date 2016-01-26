@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DBNet.Plugins, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DBNet.Plugins\bin\Debug\DBNet.Plugins.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,13 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Example.cs" />
+    <Compile Include="HelloWorldCommand.cs" />
+    <Compile Include="HelloWorldCommandHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DBNet.Plugins\DBNet.Plugins.csproj">
-      <Project>{cfcb7d69-92f4-4513-a117-ad8bff328e7a}</Project>
-      <Name>DBNet.Plugins</Name>
-    </ProjectReference>
+    <None Include="plugin.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

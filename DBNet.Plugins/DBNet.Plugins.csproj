@@ -36,6 +36,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,12 +50,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions.cs" />
-    <Compile Include="Handler.cs" />
-    <Compile Include="Plugin.cs" />
-    <Compile Include="PluginInformation.cs" />
-    <Compile Include="PluginManager.cs" />
+    <Compile Include="Exceptions\PluginInformationMissingException.cs" />
+    <Compile Include="Exceptions\NoHandlersFoundException.cs" />
+    <Compile Include="Exceptions\PluginEntryPointMissingException.cs" />
+    <Compile Include="Interfaces\Handlers\ICommandHandler.cs" />
+    <Compile Include="Interfaces\Handlers\IEventHandler.cs" />
+    <Compile Include="Interfaces\Handlers\IQueryHandler.cs" />
+    <Compile Include="Management\IPluginManager.cs" />
+    <Compile Include="Model\Handler.cs" />
+    <Compile Include="Interfaces\Objects\ICommand.cs" />
+    <Compile Include="Interfaces\Results\ICommandResult.cs" />
+    <Compile Include="Interfaces\Objects\IEvent.cs" />
+    <Compile Include="Interfaces\Handlers\IHandler.cs" />
+    <Compile Include="Interfaces\IPlugin.cs" />
+    <Compile Include="Interfaces\IPluginInformation.cs" />
+    <Compile Include="Interfaces\Objects\IQuery.cs" />
+    <Compile Include="Interfaces\Results\IQueryResult.cs" />
+    <Compile Include="Model\Plugin.cs" />
+    <Compile Include="Model\PluginInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registration\IPluginRegistrationFactory.cs" />
+    <Compile Include="Dto\Plugin.cs" />
+    <Compile Include="Management\PluginManager.cs" />
+    <Compile Include="Registration\PluginRegistrationFactory.cs" />
+    <Compile Include="Registration\RegistrationException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
