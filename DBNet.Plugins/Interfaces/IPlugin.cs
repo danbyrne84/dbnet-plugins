@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DBNet.Plugins.Interfaces.Handlers;
+using DBNet.Plugins.Interfaces.Objects;
 
 namespace DBNet.Plugins.Interfaces
 {
@@ -7,6 +8,6 @@ namespace DBNet.Plugins.Interfaces
     {
         void Initialize();
         IPluginInformation MetaData { get; set; }
-        IEnumerable<IHandler> GetHandlers();
+        IEnumerable<ICqrsObject> GetExposedMethods();
     }
 }

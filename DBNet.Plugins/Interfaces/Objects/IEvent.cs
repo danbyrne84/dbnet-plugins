@@ -1,6 +1,6 @@
 ﻿namespace DBNet.Plugins.Interfaces.Objects
 {
-    public interface IEvent
+    public interface IEvent : ICqrsObject
     {
     }
 }

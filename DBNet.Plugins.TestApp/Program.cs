@@ -28,11 +28,11 @@ namespace DBNet.Plugins.TestApp
             {
                 plugin.Initialize();
 
-                var handlers = plugin.GetHandlers().ToList();
-                if (!handlers.Any()) return;
+                var methods = plugin.GetExposedMethods().ToList();
+                if (!methods.Any()) return;
 
                 Console.WriteLine("Registered Handlers:");
-                Console.WriteLine(string.Join(",", handlers.Select(x => x.Name).ToArray()));
+                Console.WriteLine(string.Join(",", methods.Select(x => x.ToString()).ToArray()));
             });
 
             Console.ReadKey();

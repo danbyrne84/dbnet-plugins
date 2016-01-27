@@ -29,46 +29,28 @@ namespace DBNet.Plugins.Model
             Console.WriteLine("Initialize {0}", GetType());
         }
 
-        public IEnumerable<IHandler> GetHandlers()
+        public IEnumerable<ICqrsObject> GetExposedMethods()
         {
             var allTypes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes());
-            var baseType = typeof (IHandler);
+            var baseType = typeof(IHandler);
 
-            var pluginFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),MetaData.EntryPoint);
+            var pluginFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), MetaData.EntryPoint);
 
             var pluginTypes = Assembly.LoadFile(pluginFilePath).DefinedTypes
                 .ToList();
 
+            var t = pluginTypes[1].GetInterfaces();
+
             var ints = pluginTypes.SelectMany(x => x.GetInterfaces());
 
-            var z = pluginTypes.Where(x => typeof (ICommand).IsAssignableFrom(x));
-            
+            var objs = pluginTypes.Where(x => typeof (ICqrsObject).IsAssignableFrom(x));
 
-            var handlers =
-                pluginTypes
-                    .SelectMany(
-                        x => x.GetInterfaces().Where(it =>
-                            it.FullName.Contains("ICommand") ||
-                            it.FullName.Contains("IQuery") ||
-                            it.FullName.Contains("IEvent")));
-                    //.Select(Activator.CreateInstance);
+            var ret = objs.Select(Activator.CreateInstance) as IEnumerable<ICqrsObject>;
 
-            var commands =
-                pluginTypes
-                    .Where(x => x.GetInterface("ICommand") != null)
-                    .Select(Activator.CreateInstance);
-
-
-            /**
-            var handlerTypes = allTypes.Where(x => x.FullName.StartsWith("DBNet.Plugins")).Where(x => x.FindInterfaces(y => typeof(ICommandHandler<,>))); // {Name = "HelloWorldCommandHandler" FullName = "DBNet.Plugins.Example.HelloWorldCommandHandler"}
-            var handler = allTypes.Where(x => x.FullName.StartsWith("DBNet.Plugins.Example.HelloWorldCommandHandler"));
-
-            var instances = handlerTypes?.Select(Activator.CreateInstance) as IEnumerable<IHandler>;
-            **/
-            if (handlers == null)
+            if (ret == null)
                 throw new NoHandlersFoundException();
 
-            return null;
+            return ret;
         }
     }
 }
