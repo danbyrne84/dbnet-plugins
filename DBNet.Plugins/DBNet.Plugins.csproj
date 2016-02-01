@@ -74,7 +74,7 @@
     <Compile Include="Interfaces\IPluginInformation.cs" />
     <Compile Include="Interfaces\Objects\IQuery.cs" />
     <Compile Include="Interfaces\Results\IQueryResult.cs" />
-    <Compile Include="Model\ICqrsResponse.cs" />
+    <Compile Include="Model\CqrsResponse.cs" />
     <Compile Include="Model\Plugin.cs" />
     <Compile Include="Model\PluginInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

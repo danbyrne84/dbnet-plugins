@@ -1,5 +1,6 @@
 ﻿using System;
 using DBNet.Plugins.Interfaces;
+using DBNet.Plugins.Interfaces.Objects;
 using DBNet.Plugins.Model;
 
 namespace DBNet.Plugins.Example
@@ -10,6 +11,16 @@ namespace DBNet.Plugins.Example
         {
             Console.WriteLine(GetType());
             Console.WriteLine("Example :: Initialize called.");
+        }
+
+        public override bool CanHandle(string strongName)
+        {
+            return true;
+        }
+
+        public override ICqrsResponse Handle(ICqrsObject action)
+        {
+            return null;
         }
     }
 }

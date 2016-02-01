@@ -53,16 +53,9 @@ namespace DBNet.Plugins.Model
 
             return cqrsTypes;
         }
-        public virtual bool CanHandle(string strongName)
-        {
-            return false; // default to false, must override with own logic
-        }
 
-        Interfaces.Objects.ICqrsResponse IPlugin.Handle(ICqrsObject action)
-        {
-            Console.WriteLine($"{GetType()} :: Handle");
+        public abstract bool CanHandle(string strongName);
 
-            return null;
-        }
+        public abstract ICqrsResponse Handle(ICqrsObject action);
     }
 }
