@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
-using DBNet.Plugins.Dto;
 using DBNet.Plugins.Interfaces;
+using DBNet.Plugins.Interfaces.Objects;
 using DBNet.Plugins.Model;
 using DBNet.Plugins.Registration;
 using Newtonsoft.Json;
@@ -50,6 +48,20 @@ namespace DBNet.Plugins.Management
             });
 
             return plugins;
+        }
+
+        public void Execute(ICqrsObject action)
+        {
+            var plugin = ChoosePluginForAction(action);
+            var response = plugin.Handle(action);
+        }
+
+        public IPlugin ChoosePluginForAction(ICqrsObject action)
+        {
+            var capable = Plugins.Where(plugin => plugin.CanHandle(action.GetType().FullName));
+
+            // pretty dumb selection logic for now, pass in ranking preferences later
+            return capable.FirstOrDefault();
         }
     }
 }

@@ -4,13 +4,12 @@ using DBNet.Plugins.Model;
 
 namespace DBNet.Plugins.Example
 {
-    public class Example : Plugin, IPlugin
+    public class Example : Plugin
     {
-        public void Initialize()
+        public new void Initialize()
         {
             Console.WriteLine(GetType());
             Console.WriteLine("Example :: Initialize called.");
-
         }
     }
 }

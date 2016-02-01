@@ -63,6 +63,7 @@
     <Compile Include="Interfaces\Handlers\IEventHandler.cs" />
     <Compile Include="Interfaces\Handlers\IQueryHandler.cs" />
     <Compile Include="Interfaces\Objects\ICqrsObject.cs" />
+    <Compile Include="Interfaces\Objects\ICqrsResponse.cs" />
     <Compile Include="Management\IPluginManager.cs" />
     <Compile Include="Model\Handler.cs" />
     <Compile Include="Interfaces\Objects\ICommand.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Interfaces\IPluginInformation.cs" />
     <Compile Include="Interfaces\Objects\IQuery.cs" />
     <Compile Include="Interfaces\Results\IQueryResult.cs" />
+    <Compile Include="Model\ICqrsResponse.cs" />
     <Compile Include="Model\Plugin.cs" />
     <Compile Include="Model\PluginInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

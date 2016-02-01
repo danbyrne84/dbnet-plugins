@@ -9,5 +9,7 @@ namespace DBNet.Plugins.Interfaces
         void Initialize();
         IPluginInformation MetaData { get; set; }
         IEnumerable<ICqrsObject> GetExposedMethods();
+        bool CanHandle(string strongName);
+        ICqrsResponse Handle(ICqrsObject action);
     }
 }

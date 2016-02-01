@@ -33,6 +33,15 @@ namespace DBNet.Plugins.TestApp
 
                 Console.WriteLine("Registered Handlers:");
                 Console.WriteLine(string.Join(",", methods.Select(x => x.ToString()).ToArray()));
+
+                foreach (var action in methods)
+                {
+                    if (plugin.CanHandle(action.GetType().FullName))
+                    {
+                        var handled = plugin.Handle(action);
+                    }
+                }
+
             });
 
             Console.ReadKey();
