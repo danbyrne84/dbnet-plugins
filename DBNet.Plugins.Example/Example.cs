@@ -15,12 +15,15 @@ namespace DBNet.Plugins.Example
 
         public override bool CanHandle(string strongName)
         {
+            Console.WriteLine(string.Concat(GetType(), " :: CanHandle" ));
             return true;
         }
 
         public override ICqrsResponse Handle(ICqrsObject action)
         {
-            return null;
+            Console.WriteLine(string.Concat(GetType(), " :: Handle"));
+
+            return new CqrsResponse {Success = true};
         }
     }
 }
