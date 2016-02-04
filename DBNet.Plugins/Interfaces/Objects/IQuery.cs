@@ -1,6 +1,6 @@
 ﻿namespace DBNet.Plugins.Interfaces.Objects
 {
-    public interface IQuery<T> : ICqrsObject
+    public interface IQuery<T, TR> : ICqrsObject
     {
     }
 }

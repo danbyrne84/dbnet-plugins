@@ -64,7 +64,8 @@
     <Compile Include="Interfaces\Handlers\IQueryHandler.cs" />
     <Compile Include="Interfaces\Objects\ICqrsObject.cs" />
     <Compile Include="Interfaces\Objects\ICqrsResponse.cs" />
-    <Compile Include="Management\IPluginManager.cs" />
+    <Compile Include="Interfaces\IPluginManager.cs" />
+    <Compile Include="Model\CqrsHandlerFactory.cs" />
     <Compile Include="Model\Handler.cs" />
     <Compile Include="Interfaces\Objects\ICommand.cs" />
     <Compile Include="Interfaces\Results\ICommandResult.cs" />
@@ -75,8 +76,10 @@
     <Compile Include="Interfaces\Objects\IQuery.cs" />
     <Compile Include="Interfaces\Results\IQueryResult.cs" />
     <Compile Include="Model\CqrsResponse.cs" />
+    <Compile Include="Interfaces\Objects\ICqrsHandlerFactory.cs" />
     <Compile Include="Model\Plugin.cs" />
     <Compile Include="Model\PluginInformation.cs" />
+    <Compile Include="Model\Results\CommandResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registration\IPluginRegistrationFactory.cs" />
     <Compile Include="Dto\Plugin.cs" />

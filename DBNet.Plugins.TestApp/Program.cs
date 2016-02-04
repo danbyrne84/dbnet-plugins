@@ -28,7 +28,7 @@ namespace DBNet.Plugins.TestApp
             {
                 plugin.Initialize();
 
-                var methods = plugin.GetExposedMethods().ToList();
+                var methods = plugin.CqrsCollection.ToList();
                 if (!methods.Any()) return;
 
                 Console.WriteLine("Registered Handlers:");
@@ -36,7 +36,9 @@ namespace DBNet.Plugins.TestApp
 
                 foreach (var action in methods)
                 {
-                    if (plugin.CanHandle(action.GetType().FullName))
+                    var fullType = action.GetType().Name;
+
+                    if (plugin.CanHandle(fullType))
                     {
                         var handled = plugin.Handle(action);
                     }

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DBNet.Plugins.Interfaces.Objects;
+﻿using DBNet.Plugins.Interfaces.Objects;
+using DBNet.Plugins.Interfaces.Results;
 
 namespace DBNet.Plugins.Interfaces.Handlers
 {
-    public interface ICommandHandler<T> where T : ICommand
+    public interface ICommandHandler<in T> where T : ICommand
     {
-        void Handle(T command);
+        bool Handle(T command);
     }
 
     public interface ICommandHandler

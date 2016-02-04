@@ -7,8 +7,8 @@ using DBNet.Plugins.Interfaces.Objects;
 
 namespace DBNet.Plugins.Interfaces.Handlers
 {
-    public interface IEventHandler
+    public interface IEventHandler<T> where T : IEvent
     {
-        void Handle(IEvent evt);
+        void Handle(T evt);
     }
 }

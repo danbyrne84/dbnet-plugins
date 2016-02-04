@@ -8,8 +8,8 @@ using DBNet.Plugins.Interfaces.Results;
 
 namespace DBNet.Plugins.Interfaces.Handlers
 {
-    public interface IQueryHandler<T> where T : IQuery<T>
+    public interface IQueryHandler<in T, out TR> where T : IQuery<T, TR>
     {
-        IQueryResult<TR> Handle<TR>(T query) where TR : IQueryResult<T>;
+        TR Handle(T query);
     }
 }

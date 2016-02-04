@@ -2,6 +2,6 @@
 {
     public interface ICqrsObject
     {
-        
+        string Name { get; }
     }
 }

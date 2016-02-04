@@ -9,16 +9,22 @@ using DBNet.Plugins.Interfaces.Objects;
 
 namespace DBNet.Plugins.Model
 {
-    public abstract class Plugin : IPlugin
+    public class Plugin : IPlugin
     {
         public IPluginInformation MetaData { get; set;  }
 
-        public Plugin(IPluginInformation metaData)
+        private const string Unknown = "Unknown";
+        private const string PluginDirectory = "plugins";
+
+        private readonly ICqrsHandlerFactory _cqrsHandlerFactory;
+
+        public Plugin(IPluginInformation metaData, ICqrsHandlerFactory factory = null)
         {
             MetaData = metaData;
+            _cqrsHandlerFactory = factory ?? new CqrsHandlerFactory();
         }
 
-        protected Plugin()
+        public Plugin()
         {
             Console.WriteLine("Construct {0}", GetType());
         }
@@ -28,34 +34,45 @@ namespace DBNet.Plugins.Model
             Console.WriteLine($"{GetType()} :: Initialize");
         }
 
-        public IEnumerable<ICqrsObject> GetExposedMethods()
+        private IEnumerable<ICqrsObject> _cqrsCollection;
+        public IEnumerable<ICqrsObject> CqrsCollection
         {
-            IList<ICqrsObject> cqrsTypes;
-            string pluginPath = null;
-
-            try
+            get
             {
-                pluginPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), MetaData.EntryPoint);
+                if (_cqrsCollection != null) return _cqrsCollection;
 
-                var pluginTypes = Assembly.LoadFile(pluginPath).DefinedTypes.ToList();
+                var pluginPath = Unknown;
 
-                cqrsTypes = pluginTypes.Where(x => typeof(ICqrsObject).IsAssignableFrom(x))
-                    .Select(Activator.CreateInstance)
-                    .Cast<ICqrsObject>()
-                    .ToList();
+                try
+                {
+                    pluginPath = Path.Combine(
+                        Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                        PluginDirectory, 
+                        MetaData.Name, 
+                        MetaData.EntryPoint);
+
+                    return _cqrsCollection = Assembly.LoadFile(pluginPath)
+                        .DefinedTypes.ToList()
+                        .Where(x => typeof (ICqrsObject).IsAssignableFrom(x))
+                        .Select(Activator.CreateInstance)
+                        .Cast<ICqrsObject>()
+                        .ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw new PluginEntryPointMissingException($"The entry point {pluginPath} for plugin {MetaData.Name} cannot be found", ex);
+                }
             }
-            catch (Exception ex)
-            {
-                throw new PluginEntryPointMissingException($"The entry point {pluginPath ?? "(unknown)"} does not exist", ex);
-            }
-
-            if (cqrsTypes.Any() == false) throw new NoHandlersFoundException();
-
-            return cqrsTypes;
         }
 
-        public abstract bool CanHandle(string strongName);
+        public bool CanHandle(string cqrsIdentifier)
+        {
+            return CqrsCollection.Any(x => x.GetType().Name == cqrsIdentifier);
+        }
 
-        public abstract ICqrsResponse Handle(ICqrsObject action);
+        public ICqrsResponse Handle(ICqrsObject action)
+        {
+            return _cqrsHandlerFactory.Handle(action);
+        }
     }
 }

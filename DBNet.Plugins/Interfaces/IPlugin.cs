@@ -8,8 +8,8 @@ namespace DBNet.Plugins.Interfaces
     {
         void Initialize();
         IPluginInformation MetaData { get; set; }
-        IEnumerable<ICqrsObject> GetExposedMethods();
-        bool CanHandle(string strongName);
+        IEnumerable<ICqrsObject> CqrsCollection { get; }
+        bool CanHandle(string cqrsIdentifier);
         ICqrsResponse Handle(ICqrsObject action);
     }
 }
