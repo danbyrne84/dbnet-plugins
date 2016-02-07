@@ -1,10 +1,10 @@
-﻿using DBNet.Plugins.Model;
+﻿using TinyCQRS.Core.Model;
 
-namespace DBNet.Plugins.Dto
+namespace TinyCQRS.Core.Dto
 {
     public class Plugin
     {
-        public PluginInformation MetaData { get; set; }
+        public PluginMetadata MetaData { get; set; }
         public string[] Handlers { get; set; }
     }
 }

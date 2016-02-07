@@ -1,8 +1,8 @@
-﻿using DBNet.Plugins.Interfaces;
+﻿using TinyCQRS.Core.Interfaces;
 
-namespace DBNet.Plugins.Model
+namespace TinyCQRS.Core.Model
 {
-    public class PluginInformation : IPluginInformation
+    public class PluginMetadata : IPluginMetadata
     {
         public string Name { get; set; }
         public string Description { get; set; }

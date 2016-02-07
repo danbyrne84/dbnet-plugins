@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace DBNet.Plugins.Example.Datastore
+namespace TinyCQRS.Plugins.Example.Datastore
 {
     public class MemoryDataStore
     {
-        private static Dictionary<string, object> _dataStore;
+        private static Dictionary<int, object> _dataStore;
 
-        public Dictionary<string, object> Store
+        public Dictionary<int, object> Store
         {
-            get { return _dataStore = _dataStore ?? new Dictionary<string, object>(); }
+            get { return _dataStore = _dataStore ?? new Dictionary<int, object>(); }
         }
     }
 }

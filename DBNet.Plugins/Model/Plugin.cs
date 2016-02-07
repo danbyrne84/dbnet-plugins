@@ -1,78 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using DBNet.Plugins.Exceptions;
-using DBNet.Plugins.Interfaces;
-using DBNet.Plugins.Interfaces.Objects;
+using TinyCQRS.Core.Interfaces;
+using TinyCQRS.Core.Interfaces.Handlers;
+using TinyCQRS.Core.Interfaces.Objects;
+using TinyCQRS.Core.Model.Internal;
 
-namespace DBNet.Plugins.Model
+namespace TinyCQRS.Core.Model
 {
-    public class Plugin : IPlugin
+    public abstract class Plugin : IPlugin
     {
-        public IPluginInformation MetaData { get; set;  }
+        public IPluginMetadata MetaData { get; set;  }
 
         private const string Unknown = "Unknown";
         private const string PluginDirectory = "plugins";
 
-        private readonly ICqrsHandlerFactory _cqrsHandlerFactory;
+        // Handlers
+        #region Handlers
+        private IHandlerFactory _handlerFactory = new HandlerFactory();
+        private IEnumerable<IHandler> _handlerObjects = new List<IHandler>();
 
-        public Plugin(IPluginInformation metaData, ICqrsHandlerFactory factory = null)
-        {
-            MetaData = metaData;
-            _cqrsHandlerFactory = factory ?? new CqrsHandlerFactory();
-        }
-
-        public Plugin()
-        {
-            Console.WriteLine("Construct {0}", GetType());
-        }
-
-        public void Initialize()
-        {
-            Console.WriteLine($"{GetType()} :: Initialize");
-        }
-
-        private IEnumerable<ICqrsObject> _cqrsCollection;
-        public IEnumerable<ICqrsObject> CqrsCollection
+        // Execution handlers
+        public IEnumerable<IHandler> Handlers
         {
             get
             {
-                if (_cqrsCollection != null) return _cqrsCollection;
-
-                var pluginPath = Unknown;
-
-                try
-                {
-                    pluginPath = Path.Combine(
-                        Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                        PluginDirectory, 
-                        MetaData.Name, 
-                        MetaData.EntryPoint);
-
-                    return _cqrsCollection = Assembly.LoadFile(pluginPath)
-                        .DefinedTypes.ToList()
-                        .Where(x => typeof (ICqrsObject).IsAssignableFrom(x))
-                        .Select(Activator.CreateInstance)
-                        .Cast<ICqrsObject>()
-                        .ToList();
-                }
-                catch (Exception ex)
-                {
-                    throw new PluginEntryPointMissingException($"The entry point {pluginPath} for plugin {MetaData.Name} cannot be found", ex);
-                }
+                return _handlerObjects = _handlerObjects ??
+                                   this.GetType().Assembly.GetTypes()
+                                       .ToList()
+                                       .Where(x => typeof(IHandler).IsAssignableFrom(x))
+                                       .Select(Activator.CreateInstance) as IEnumerable<IHandler>;
             }
         }
+        #endregion
 
-        public bool CanHandle(string cqrsIdentifier)
+        // Execution units
+        #region Execution Units
+        private IEnumerable<IAction> _executionUnits = new List<IAction>();
+        public IEnumerable<IAction> ExecutionUnits
         {
-            return CqrsCollection.Any(x => x.GetType().Name == cqrsIdentifier);
+            get
+            {
+                return _executionUnits = _executionUnits ??
+                                   this.GetType().Assembly.GetTypes()
+                                       .ToList()
+                                       .Where(x => typeof(IAction).IsAssignableFrom(x))
+                                       .Select(Activator.CreateInstance) as IEnumerable<IAction>;
+            }
+        }
+        #endregion
+
+        // find the appropriate method and execute it
+
+        public ICqrsResponse Handle(IAction action)
+        {
+            return Handlers.FirstOrDefault(x => x.CanHandle(action))?.Handle(action) ?? new CqrsResponse();
         }
 
-        public ICqrsResponse Handle(ICqrsObject action)
+        // abstract constructor
+        public abstract void Initialize();
+
+        public bool CanHandle(IAction action)
         {
-            return _cqrsHandlerFactory.Handle(action);
+            return Handlers.Any(x => x.CanHandle(action));
         }
+
     }
 }

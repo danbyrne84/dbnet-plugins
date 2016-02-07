@@ -7,8 +7,8 @@
     <ProjectGuid>{2FCD32BD-A487-496E-AEE5-CBCB927B81E1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DBNet.Plugins.Example</RootNamespace>
-    <AssemblyName>DBNet.Plugins.Example</AssemblyName>
+    <RootNamespace>TinyCQRS.Plugins.Example</RootNamespace>
+    <AssemblyName>TinyCQRS.Plugins.Example</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,11 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Datastore\MemoryDataStore.cs" />
-    <Compile Include="Example.cs" />
-    <Compile Include="HelloWorldCommand.cs" />
-    <Compile Include="HelloWorldCommandHandler.cs" />
-    <Compile Include="HelloWorldQuery.cs" />
-    <Compile Include="HelloWorldQueryHandler.cs" />
+    <Compile Include="HelloWorldPlugin.cs" />
+    <Compile Include="ExecutionUnits\HelloWorldCommand.cs" />
+    <Compile Include="Handlers\HelloWorldCommandHandler.cs" />
+    <Compile Include="ExecutionUnits\HelloWorldQuery.cs" />
+    <Compile Include="Handlers\HelloWorldQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,11 +54,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DBNet.Plugins\DBNet.Plugins.csproj">
+    <ProjectReference Include="..\DBNet.Plugins\TinyCQRS.Core.csproj">
       <Project>{cfcb7d69-92f4-4513-a117-ad8bff328e7a}</Project>
-      <Name>DBNet.Plugins</Name>
+      <Name>TinyCQRS.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy "$(TargetPath)" "$(SolutionDir)\DBNet.Plugins.TestApp\bin\Debug\"

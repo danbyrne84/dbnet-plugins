@@ -1,6 +1,6 @@
-﻿namespace DBNet.Plugins.Interfaces.Objects
+﻿namespace TinyCQRS.Core.Interfaces.Objects
 {
-    public interface ICommand : ICqrsObject
+    public interface ICommand : IAction
     {
     }
 }

@@ -1,16 +1,12 @@
-﻿using DBNet.Plugins.Interfaces.Objects;
-using DBNet.Plugins.Interfaces.Results;
+﻿using TinyCQRS.Core.Interfaces.Objects;
 
-namespace DBNet.Plugins.Interfaces.Handlers
+namespace TinyCQRS.Core.Interfaces.Handlers
 {
-    public interface ICommandHandler<in T> where T : ICommand
+    public interface ICommandHandler <in T> : ICommandHandler where T : ICommand
     {
-        bool Handle(T command);
     }
 
-    public interface ICommandHandler
+    public interface ICommandHandler : IHandler
     {
-        string Name { get; }
-        string Description { get; }
     }
 }

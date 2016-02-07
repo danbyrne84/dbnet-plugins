@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace DBNet.Plugins.Registration
+namespace TinyCQRS.Core.Registration
 {
     [Serializable]
     internal class RegistrationException : Exception

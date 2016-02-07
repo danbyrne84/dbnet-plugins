@@ -1,6 +1,6 @@
-namespace DBNet.Plugins.Interfaces
+namespace TinyCQRS.Core.Interfaces
 {
-    public interface IPluginInformation
+    public interface IPluginMetadata
     {
         string Name { get; set; }
         string Description { get; set; }

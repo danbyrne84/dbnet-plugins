@@ -7,8 +7,8 @@
     <ProjectGuid>{CFCB7D69-92F4-4513-A117-AD8BFF328E7A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DBNet.Plugins</RootNamespace>
-    <AssemblyName>DBNet.Plugins</AssemblyName>
+    <RootNamespace>TinyCQRS.Core</RootNamespace>
+    <AssemblyName>TinyCQRS.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -62,25 +62,33 @@
     <Compile Include="Interfaces\Handlers\ICommandHandler.cs" />
     <Compile Include="Interfaces\Handlers\IEventHandler.cs" />
     <Compile Include="Interfaces\Handlers\IQueryHandler.cs" />
-    <Compile Include="Interfaces\Objects\ICqrsObject.cs" />
+    <Compile Include="Interfaces\Objects\IAction.cs" />
     <Compile Include="Interfaces\Objects\ICqrsResponse.cs" />
     <Compile Include="Interfaces\IPluginManager.cs" />
-    <Compile Include="Model\CqrsHandlerFactory.cs" />
-    <Compile Include="Model\Handler.cs" />
+    <Compile Include="Model\ExecutionUnits\Command.cs" />
+    <Compile Include="Model\HandlerFactory.cs" />
+    <Compile Include="Model\ExecutionUnits\Event.cs" />
+    <Compile Include="Model\Handlers\EventHandler.cs" />
+    <Compile Include="Model\Handlers\CommandHandler.cs" />
+    <Compile Include="Model\Handlers\QueryHandler.cs" />
+    <Compile Include="Model\Internal\Action.cs" />
+    <Compile Include="Model\Handlers\Handler.cs" />
     <Compile Include="Interfaces\Objects\ICommand.cs" />
     <Compile Include="Interfaces\Results\ICommandResult.cs" />
     <Compile Include="Interfaces\Objects\IEvent.cs" />
     <Compile Include="Interfaces\Handlers\IHandler.cs" />
     <Compile Include="Interfaces\IPlugin.cs" />
-    <Compile Include="Interfaces\IPluginInformation.cs" />
+    <Compile Include="Interfaces\IPluginMetadata.cs" />
     <Compile Include="Interfaces\Objects\IQuery.cs" />
     <Compile Include="Interfaces\Results\IQueryResult.cs" />
-    <Compile Include="Model\CqrsResponse.cs" />
-    <Compile Include="Interfaces\Objects\ICqrsHandlerFactory.cs" />
+    <Compile Include="Model\Internal\CqrsResponse.cs" />
+    <Compile Include="Interfaces\Objects\IHandlerFactory.cs" />
+    <Compile Include="Model\Internal\IActionResult.cs" />
     <Compile Include="Model\Plugin.cs" />
-    <Compile Include="Model\PluginInformation.cs" />
+    <Compile Include="Model\PluginMetadata.cs" />
     <Compile Include="Model\Results\CommandResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\ExecutionUnits\Query.cs" />
     <Compile Include="Registration\IPluginRegistrationFactory.cs" />
     <Compile Include="Dto\Plugin.cs" />
     <Compile Include="Management\PluginManager.cs" />
@@ -88,6 +96,7 @@
     <Compile Include="Registration\RegistrationException.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="dbnet.snk" />
     <None Include="packages.config" />
   </ItemGroup>

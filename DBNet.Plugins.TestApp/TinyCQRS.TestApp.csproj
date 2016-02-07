@@ -7,8 +7,8 @@
     <ProjectGuid>{79F7B3F4-6F2E-4288-A510-D49E83235644}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DBNet.Plugins.TestApp</RootNamespace>
-    <AssemblyName>DBNet.Plugins.TestApp</AssemblyName>
+    <RootNamespace>TinyCQRS.TestApp</RootNamespace>
+    <AssemblyName>TinyCQRS.TestApp</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,13 +47,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DBNet.Plugins.Example\DBNet.Plugins.Example.csproj">
+    <ProjectReference Include="..\DBNet.Plugins.Example\TinyCQRS.Plugins.Example.csproj">
       <Project>{2FCD32BD-A487-496E-AEE5-CBCB927B81E1}</Project>
-      <Name>DBNet.Plugins.Example</Name>
+      <Name>TinyCQRS.Plugins.Example</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DBNet.Plugins\DBNet.Plugins.csproj">
+    <ProjectReference Include="..\DBNet.Plugins\TinyCQRS.Core.csproj">
       <Project>{cfcb7d69-92f4-4513-a117-ad8bff328e7a}</Project>
-      <Name>DBNet.Plugins</Name>
+      <Name>TinyCQRS.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

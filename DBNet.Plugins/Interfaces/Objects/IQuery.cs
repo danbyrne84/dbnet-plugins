@@ -1,6 +1,7 @@
-﻿namespace DBNet.Plugins.Interfaces.Objects
+﻿namespace TinyCQRS.Core.Interfaces.Objects
 {
-    public interface IQuery<T, TR> : ICqrsObject
+    public interface IQuery<T, TR> : IAction
     {
+        string ReturnType { get; }
     }
 }

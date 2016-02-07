@@ -2,13 +2,13 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using DBNet.Plugins.Interfaces;
-using DBNet.Plugins.Interfaces.Objects;
-using DBNet.Plugins.Model;
-using DBNet.Plugins.Registration;
 using Newtonsoft.Json;
+using TinyCQRS.Core.Interfaces;
+using TinyCQRS.Core.Interfaces.Objects;
+using TinyCQRS.Core.Model;
+using TinyCQRS.Core.Registration;
 
-namespace DBNet.Plugins.Management
+namespace TinyCQRS.Core.Management
 {
     public class PluginManager : IPluginManager
     {
@@ -41,7 +41,7 @@ namespace DBNet.Plugins.Management
                 var json = File.ReadAllText(metaFile);
 
                 // parse JSON into a DTO
-                var metaData = JsonConvert.DeserializeObject<PluginInformation>(json);
+                var metaData = JsonConvert.DeserializeObject<PluginMetadata>(json);
 
                 var plugin = _registrationFactory.RegisterPlugin(directory, metaData);
                 if (plugin != null) plugins.Add(plugin);
@@ -50,15 +50,15 @@ namespace DBNet.Plugins.Management
             return plugins;
         }
 
-        public void Execute(ICqrsObject action)
+        public void Execute(IAction action)
         {
             var plugin = ChoosePluginForAction(action);
             var response = plugin.Handle(action);
         }
 
-        public IPlugin ChoosePluginForAction(ICqrsObject action)
+        public IPlugin ChoosePluginForAction(IAction action)
         {
-            var capable = Plugins.Where(plugin => plugin.CanHandle(action.GetType().FullName));
+            var capable = Plugins.Where(plugin => plugin.CanHandle(action));
 
             // pretty dumb selection logic for now, pass in ranking preferences later
             return capable.FirstOrDefault();

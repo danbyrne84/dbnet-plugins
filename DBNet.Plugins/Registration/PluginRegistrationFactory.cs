@@ -2,15 +2,13 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using DBNet.Plugins.Dto;
-using DBNet.Plugins.Interfaces;
-using DBNet.Plugins.Model;
+using TinyCQRS.Core.Interfaces;
 
-namespace DBNet.Plugins.Registration
+namespace TinyCQRS.Core.Registration
 {
     public class PluginRegistrationFactory : IPluginRegistrationFactory
     {
-        public IPlugin RegisterPlugin(string path, IPluginInformation pluginMeta)
+        public IPlugin RegisterPlugin(string path, IPluginMetadata pluginMeta)
         {
             var entryPath = Path.Combine(path, pluginMeta.EntryPoint);
 
@@ -28,7 +26,7 @@ namespace DBNet.Plugins.Registration
         }
 
         /** .NET Native Binary Support - validate an assembly and loads its plugin implementation **/
-        private IPlugin RegisterAssembly(Assembly assembly, IPluginInformation pluginMeta)
+        private IPlugin RegisterAssembly(Assembly assembly, IPluginMetadata pluginMeta)
         {
             IPlugin pluginInstance;
 

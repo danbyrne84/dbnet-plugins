@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DBNet.Plugins.Interfaces.Objects;
+﻿using TinyCQRS.Core.Interfaces.Objects;
 
-namespace DBNet.Plugins.Interfaces.Handlers
+namespace TinyCQRS.Core.Interfaces.Handlers
 {
-    public interface IEventHandler<T> where T : IEvent
+    public interface IEventHandler<T> : IEventHandler where T : IEvent
     {
-        void Handle(T evt);
+
+    }
+
+    public interface IEventHandler : IHandler
+    {
+        bool CanHandle(IEvent @event);
     }
 }

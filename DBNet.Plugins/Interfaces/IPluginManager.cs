@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using DBNet.Plugins.Interfaces;
 
-namespace DBNet.Plugins.Management
+namespace TinyCQRS.Core.Interfaces
 {
     public interface IPluginManager
     {

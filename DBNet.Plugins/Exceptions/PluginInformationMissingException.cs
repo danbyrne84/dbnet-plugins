@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DBNet.Plugins.Exceptions
+namespace TinyCQRS.Core.Exceptions
 {
     public class PluginInformationMissingException : Exception { }
 }

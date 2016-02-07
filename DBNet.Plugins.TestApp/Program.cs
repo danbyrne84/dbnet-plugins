@@ -2,8 +2,9 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using DBNet.Plugins.Management;
-namespace DBNet.Plugins.TestApp
+using TinyCQRS.Core.Management;
+
+namespace TinyCQRS.TestApp
 {
     class Program
     {
@@ -28,7 +29,7 @@ namespace DBNet.Plugins.TestApp
             {
                 plugin.Initialize();
 
-                var methods = plugin.CqrsCollection.ToList();
+                var methods = plugin.ExecutionUnits.ToList();
                 if (!methods.Any()) return;
 
                 Console.WriteLine("Registered Handlers:");
@@ -36,9 +37,7 @@ namespace DBNet.Plugins.TestApp
 
                 foreach (var action in methods)
                 {
-                    var fullType = action.GetType().Name;
-
-                    if (plugin.CanHandle(fullType))
+                    if (plugin.CanHandle(action))
                     {
                         var handled = plugin.Handle(action);
                     }

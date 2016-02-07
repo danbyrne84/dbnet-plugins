@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DBNet.Plugins.Interfaces.Objects;
-using DBNet.Plugins.Interfaces.Results;
+﻿using TinyCQRS.Core.Interfaces.Objects;
 
-namespace DBNet.Plugins.Interfaces.Handlers
+namespace TinyCQRS.Core.Interfaces.Handlers
 {
-    public interface IQueryHandler<in T, out TR> where T : IQuery<T, TR>
+    public interface IQueryHandler<in T, out TR> : IQueryHandler where T : IQuery<T, TR>
     {
         TR Handle(T query);
+    }
+
+    public interface IQueryHandler : IHandler
+    {
+        
     }
 }

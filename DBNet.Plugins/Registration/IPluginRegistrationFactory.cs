@@ -1,10 +1,9 @@
-﻿using DBNet.Plugins.Interfaces;
-using DBNet.Plugins.Model;
+﻿using TinyCQRS.Core.Interfaces;
 
-namespace DBNet.Plugins.Registration
+namespace TinyCQRS.Core.Registration
 {
     public interface IPluginRegistrationFactory
     {
-        IPlugin RegisterPlugin(string path, IPluginInformation metadata);
+        IPlugin RegisterPlugin(string path, IPluginMetadata metadata);
     }
 }
