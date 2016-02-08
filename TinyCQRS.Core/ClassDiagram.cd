@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="TinyCQRS.Core.Model.PluginMetadata">
-    <Position X="11.75" Y="10.75" Width="1.5" />
+    <Position X="12.5" Y="22.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAEAAAAAAAAABAAAAAAA=</HashCode>
       <FileName>Model\PluginMetadata.cs</FileName>
@@ -9,7 +9,14 @@
     <Lollipop Position="0.1" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.ExecutionUnits.Command">
-    <Position X="17.5" Y="1.75" Width="2" />
+    <Position X="19" Y="11" Width="2" />
+    <InheritanceLine Type="TinyCQRS.Core.Model.Internal.Action" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="17.812" Y="16.5" />
+        <Point X="17.812" Y="11.562" />
+        <Point X="19" Y="11.562" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\ExecutionUnits\Command.cs</FileName>
@@ -17,7 +24,13 @@
     <Lollipop Position="0.1" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.ExecutionUnits.Query&lt;T, TR&gt;">
-    <Position X="22" Y="1.5" Width="2" />
+    <Position X="21.5" Y="12.25" Width="2" />
+    <InheritanceLine Type="TinyCQRS.Core.Model.ExecutionUnits.Query" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="21" Y="12.688" />
+        <Point X="21.5" Y="12.688" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Model\ExecutionUnits\Query.cs</FileName>
@@ -25,7 +38,14 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.ExecutionUnits.Event">
-    <Position X="20" Y="7.5" Width="2" />
+    <Position X="19" Y="13.75" Width="2" />
+    <InheritanceLine Type="TinyCQRS.Core.Model.Internal.Action" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="18.438" Y="16.5" />
+        <Point X="18.438" Y="14.062" />
+        <Point X="19" Y="14.062" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\ExecutionUnits\Event.cs</FileName>
@@ -33,25 +53,19 @@
     <Lollipop Position="0.1" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.Plugin">
-    <Position X="11.75" Y="6.75" Width="1.75" />
-    <AssociationLine Name="_executionUnits" Type="TinyCQRS.Core.Interfaces.Objects.IAction" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="12.938" Y="6.75" />
-        <Point X="12.938" Y="6.385" />
-        <Point X="15.5" Y="6.385" />
-      </Path>
-    </AssociationLine>
+    <Position X="12.5" Y="18.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AIAIAAAAAAAAAQAAAAAAIAACAEAAAEIAAAAAAAASABA=</HashCode>
+      <HashCode>AIAIEAAAAAAAAQAAAAEAIAACAEAAAEIAAAAAAAAQABA=</HashCode>
       <FileName>Model\Plugin.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Field Name="_executionUnits" />
+      <Property Name="Handlers" />
+      <Property Name="ExecutionUnits" />
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.Handlers.Handler">
-    <Position X="22.75" Y="10.25" Width="1.5" />
+    <Position X="20.5" Y="19.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAQCAAAAAAIAAQAAAAAAAAA=</HashCode>
       <FileName>Model\Handlers\Handler.cs</FileName>
@@ -59,7 +73,15 @@
     <Lollipop Position="0.1" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.Handlers.EventHandler">
-    <Position X="24.25" Y="13" Width="2" />
+    <Position X="22" Y="22.5" Width="2" />
+    <InheritanceLine Type="TinyCQRS.Core.Model.Handlers.Handler" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="21.562" Y="21.382" />
+        <Point X="21.562" Y="22.039" />
+        <Point X="23" Y="22.039" />
+        <Point X="23" Y="22.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Handlers\EventHandler.cs</FileName>
@@ -67,7 +89,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.Handlers.EventHandler&lt;T&gt;">
-    <Position X="24.25" Y="14.5" Width="2" />
+    <Position X="22" Y="24" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Handlers\EventHandler.cs</FileName>
@@ -75,7 +97,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.Internal.Action">
-    <Position X="17.25" Y="5.25" Width="1.5" />
+    <Position X="17.5" Y="16.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAgAAQAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Model\Internal\Action.cs</FileName>
@@ -83,7 +105,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.Handlers.QueryHandler&lt;T, TR&gt;">
-    <Position X="24.25" Y="18" Width="2" />
+    <Position X="22" Y="27.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Handlers\QueryHandler.cs</FileName>
@@ -91,7 +113,15 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.Handlers.CommandHandler">
-    <Position X="24.25" Y="19.75" Width="2" />
+    <Position X="22" Y="29.25" Width="2" />
+    <InheritanceLine Type="TinyCQRS.Core.Model.Handlers.Handler" FixedFromPoint="true">
+      <Path>
+        <Point X="20.75" Y="21.382" />
+        <Point X="20.75" Y="28.95" />
+        <Point X="23" Y="28.95" />
+        <Point X="23" Y="29.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Handlers\CommandHandler.cs</FileName>
@@ -99,7 +129,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.Handlers.CommandHandler&lt;T&gt;">
-    <Position X="24.25" Y="21.25" Width="2" />
+    <Position X="22" Y="30.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Handlers\CommandHandler.cs</FileName>
@@ -107,7 +137,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.Handlers.QueryHandler">
-    <Position X="24.25" Y="16.5" Width="2" />
+    <Position X="22" Y="26" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Handlers\QueryHandler.cs</FileName>
@@ -115,98 +145,150 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="TinyCQRS.Core.Model.ExecutionUnits.Query">
-    <Position X="22" Y="3.25" Width="2" />
+    <Position X="19" Y="12.25" Width="2" />
+    <InheritanceLine Type="TinyCQRS.Core.Model.Internal.Action" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="18.125" Y="16.5" />
+        <Point X="18.125" Y="12.688" />
+        <Point X="19" Y="12.688" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\ExecutionUnits\Query.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Interface Name="TinyCQRS.Core.Interfaces.Handlers.IHandler">
-    <Position X="21" Y="10.25" Width="1.5" />
+    <Position X="18.75" Y="19.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAQCAAAAAAIAAQAAAAAAAAA=</HashCode>
       <FileName>Interfaces\Handlers\IHandler.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TinyCQRS.Core.Interfaces.IPluginMetadata">
-    <Position X="9.75" Y="10.75" Width="1.5" />
+    <Position X="10.5" Y="22.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAEAAAAAAAAABAAAAAAA=</HashCode>
       <FileName>Interfaces\IPluginMetadata.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TinyCQRS.Core.Interfaces.Handlers.ICommandHandler&lt;T&gt;" HideInheritanceLine="true">
-    <Position X="19.25" Y="21" Width="2" />
+    <Position X="17" Y="30.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\Handlers\ICommandHandler.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TinyCQRS.Core.Interfaces.Handlers.ICommandHandler">
-    <Position X="19.25" Y="19.75" Width="2" />
+    <Position X="17" Y="29.25" Width="2" />
+    <InheritanceLine Type="TinyCQRS.Core.Interfaces.Handlers.IHandler" FixedFromPoint="true">
+      <Path>
+        <Point X="20.062" Y="21.382" />
+        <Point X="20.062" Y="28.95" />
+        <Point X="18" Y="28.95" />
+        <Point X="18" Y="29.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\Handlers\ICommandHandler.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TinyCQRS.Core.Interfaces.Objects.IAction">
-    <Position X="15.5" Y="5.25" Width="1.5" />
+    <Position X="15.75" Y="16.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAgAAQAAAAAAAAAAAAAQAAAAAA=</HashCode>
       <FileName>Interfaces\Objects\IAction.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TinyCQRS.Core.Interfaces.Objects.ICommand">
-    <Position X="15" Y="1.75" Width="1.5" />
+    <Position X="14.5" Y="11" Width="1.5" />
+    <InheritanceLine Type="TinyCQRS.Core.Interfaces.Objects.IAction" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.938" Y="16.5" />
+        <Point X="16.938" Y="11.562" />
+        <Point X="16" Y="11.562" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\Objects\ICommand.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TinyCQRS.Core.Interfaces.Objects.IQuery&lt;T, TR&gt;">
-    <Position X="11.75" Y="3.25" Width="1.5" />
+    <Position X="14.5" Y="12.25" Width="1.5" />
+    <InheritanceLine Type="TinyCQRS.Core.Interfaces.Objects.IAction" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="16.688" Y="16.5" />
+        <Point X="16.688" Y="12.75" />
+        <Point X="16" Y="12.75" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
       <FileName>Interfaces\Objects\IQuery.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TinyCQRS.Core.Interfaces.Objects.IEvent">
-    <Position X="18.25" Y="7.5" Width="1.5" />
+    <Position X="14.5" Y="13.75" Width="1.5" />
+    <InheritanceLine Type="TinyCQRS.Core.Interfaces.Objects.IAction" FixedToPoint="true">
+      <Path>
+        <Point X="16.5" Y="16.5" />
+        <Point X="16.5" Y="14.125" />
+        <Point X="16" Y="14.125" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\Objects\IEvent.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TinyCQRS.Core.Interfaces.IPlugin">
-    <Position X="9.75" Y="6.75" Width="1.5" />
+    <Position X="10.5" Y="18.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAAAQAAAAAAAAACAEAAAEIAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\IPlugin.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TinyCQRS.Core.Interfaces.Handlers.IEventHandler&lt;T&gt;">
-    <Position X="19.25" Y="14.5" Width="2" />
+    <Position X="17" Y="24" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\Handlers\IEventHandler.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TinyCQRS.Core.Interfaces.Handlers.IEventHandler">
-    <Position X="19.25" Y="13" Width="2" />
+    <Position X="17" Y="22.5" Width="2" />
+    <InheritanceLine Type="TinyCQRS.Core.Interfaces.Handlers.IHandler" FixedFromPoint="true">
+      <Path>
+        <Point X="19.312" Y="21.382" />
+        <Point X="19.312" Y="22.125" />
+        <Point X="18" Y="22.125" />
+        <Point X="18" Y="22.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\Handlers\IEventHandler.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TinyCQRS.Core.Interfaces.Handlers.IQueryHandler&lt;T, TR&gt;">
-    <Position X="19.25" Y="18" Width="2" />
+    <Position X="17" Y="27.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\Handlers\IQueryHandler.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="TinyCQRS.Core.Interfaces.Handlers.IQueryHandler">
-    <Position X="19.25" Y="16.5" Width="2" />
+    <Position X="17" Y="26" Width="2" />
+    <InheritanceLine Type="TinyCQRS.Core.Interfaces.Handlers.IHandler" FixedFromPoint="true">
+      <Path>
+        <Point X="19.688" Y="21.382" />
+        <Point X="19.688" Y="25.625" />
+        <Point X="18" Y="25.625" />
+        <Point X="18" Y="26" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Interfaces\Handlers\IQueryHandler.cs</FileName>

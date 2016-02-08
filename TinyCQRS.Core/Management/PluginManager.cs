@@ -20,7 +20,7 @@ namespace TinyCQRS.Core.Management
             _registrationFactory = new PluginRegistrationFactory();
         }
 
-        public List<IPlugin> LoadPlugins(string path, string name = null, bool recursive = true)
+        public List<IPlugin> LoadPlugins(string path, string name = null, bool recursive = false)
         {
             var plugins = new List<IPlugin>();
 
@@ -31,8 +31,7 @@ namespace TinyCQRS.Core.Management
             // .. .. .. plugin.json
             var recursiveOpt = recursive ? SearchOption.AllDirectories :SearchOption.TopDirectoryOnly;
 
-            var directories = Directory.GetDirectories(path, "*", recursiveOpt)
-                .Where(x => x.Equals(path) == false);
+            var directories = Directory.GetDirectories(path, "*", recursiveOpt);
 
             Parallel.ForEach(directories, directory =>
             {

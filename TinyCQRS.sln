@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyCQRS.Plugins.Example", "DBNet.Plugins.Example\TinyCQRS.Plugins.Example.csproj", "{2FCD32BD-A487-496E-AEE5-CBCB927B81E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyCQRS.Plugins.Example", "TinyCQRS.Plugins.Example\TinyCQRS.Plugins.Example.csproj", "{2FCD32BD-A487-496E-AEE5-CBCB927B81E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyCQRS.Core", "DBNet.Plugins\TinyCQRS.Core.csproj", "{CFCB7D69-92F4-4513-A117-AD8BFF328E7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyCQRS.Core", "TinyCQRS.Core\TinyCQRS.Core.csproj", "{CFCB7D69-92F4-4513-A117-AD8BFF328E7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyCQRS.TestApp", "DBNet.Plugins.TestApp\TinyCQRS.TestApp.csproj", "{79F7B3F4-6F2E-4288-A510-D49E83235644}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyCQRS.TestApp", "TinyCQRS.TestApp\TinyCQRS.TestApp.csproj", "{79F7B3F4-6F2E-4288-A510-D49E83235644}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

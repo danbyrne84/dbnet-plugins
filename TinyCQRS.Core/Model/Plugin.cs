@@ -15,21 +15,35 @@ namespace TinyCQRS.Core.Model
         private const string Unknown = "Unknown";
         private const string PluginDirectory = "plugins";
 
+        private IList<Type> AllTypes => GetType().Assembly.GetTypes().ToList();
+
         // Handlers
         #region Handlers
         private IHandlerFactory _handlerFactory = new HandlerFactory();
-        private IEnumerable<IHandler> _handlerObjects = new List<IHandler>();
+        private IEnumerable<IHandler> _handlers = new List<IHandler>();
 
         // Execution handlers
         public IEnumerable<IHandler> Handlers
         {
             get
             {
-                return _handlerObjects = _handlerObjects ??
-                                   this.GetType().Assembly.GetTypes()
-                                       .ToList()
-                                       .Where(x => typeof(IHandler).IsAssignableFrom(x))
-                                       .Select(Activator.CreateInstance) as IEnumerable<IHandler>;
+                var handlers = AllTypes.Where(x => typeof(IHandler).IsAssignableFrom(x));
+                var typeCollection = new List<IHandler>();
+
+                foreach (var action in handlers)
+                {
+                    try
+                    {
+                        var instance = Activator.CreateInstance(action) as IHandler;
+                        typeCollection.Add(instance);
+                    }
+                    catch (Exception)
+                    {
+                        //@todo log, for now just silently ignore
+                    }
+                }
+
+                return typeCollection;
             }
         }
         #endregion
@@ -41,11 +55,22 @@ namespace TinyCQRS.Core.Model
         {
             get
             {
-                return _executionUnits = _executionUnits ??
-                                   this.GetType().Assembly.GetTypes()
-                                       .ToList()
-                                       .Where(x => typeof(IAction).IsAssignableFrom(x))
-                                       .Select(Activator.CreateInstance) as IEnumerable<IAction>;
+                var executionUnits = AllTypes.Where(x => typeof (IAction).IsAssignableFrom(x));
+                var typeCollection = new List<IAction>();
+
+                foreach (var action in executionUnits)
+                {
+                    try
+                    {
+                        var instance = Activator.CreateInstance(action) as IAction;
+                        typeCollection.Add(instance);
+                    }
+                    catch (Exception)
+                    {
+                        //@todo log, for now just silently ignore
+                    }
+                }
+                return typeCollection;
             }
         }
         #endregion

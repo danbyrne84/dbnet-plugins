@@ -2,7 +2,7 @@
   "metaData": {
     "name": "Example plugin",
     "description": "Hello World",
-    "entryPoint": "DBNet.Plugins.Example.dll",
+    "entryPoint": "TinyCQRS.Plugins.Example.dll",
     "handlers": [ "HelloWorldCommand","HelloWorldQuery","HelloWorldEvent" ]
   }
 }
