@@ -64,24 +64,8 @@
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="TinyCQRS.Core.Model.Handlers.Handler">
-    <Position X="20.5" Y="19.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQCAAAAAAIAAQAAAAAAAAA=</HashCode>
-      <FileName>Model\Handlers\Handler.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.1" />
-  </Class>
   <Class Name="TinyCQRS.Core.Model.Handlers.EventHandler">
     <Position X="22" Y="22.5" Width="2" />
-    <InheritanceLine Type="TinyCQRS.Core.Model.Handlers.Handler" ManuallyRouted="true" FixedFromPoint="true">
-      <Path>
-        <Point X="21.562" Y="21.382" />
-        <Point X="21.562" Y="22.039" />
-        <Point X="23" Y="22.039" />
-        <Point X="23" Y="22.5" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Handlers\EventHandler.cs</FileName>
@@ -99,7 +83,7 @@
   <Class Name="TinyCQRS.Core.Model.Internal.Action">
     <Position X="17.5" Y="16.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAgAAQAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAQAAAAAAAAAAQAAQAAAAAA=</HashCode>
       <FileName>Model\Internal\Action.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -114,14 +98,6 @@
   </Class>
   <Class Name="TinyCQRS.Core.Model.Handlers.CommandHandler">
     <Position X="22" Y="29.25" Width="2" />
-    <InheritanceLine Type="TinyCQRS.Core.Model.Handlers.Handler" FixedFromPoint="true">
-      <Path>
-        <Point X="20.75" Y="21.382" />
-        <Point X="20.75" Y="28.95" />
-        <Point X="23" Y="28.95" />
-        <Point X="23" Y="29.25" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Model\Handlers\CommandHandler.cs</FileName>
@@ -197,7 +173,7 @@
   <Interface Name="TinyCQRS.Core.Interfaces.Objects.IAction">
     <Position X="15.75" Y="16.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAgAAQAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAgAAAAAAAgAAQAAAAAAAAAAQAAQAAAAAA=</HashCode>
       <FileName>Interfaces\Objects\IAction.cs</FileName>
     </TypeIdentifier>
   </Interface>

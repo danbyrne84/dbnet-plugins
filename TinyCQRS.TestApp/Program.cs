@@ -19,7 +19,7 @@ namespace TinyCQRS.TestApp
 
             var pluginPath = Path.Combine(exePath, "plugins");
             if (Directory.Exists(pluginPath) == false) { throw new ApplicationException("plugin subdirectory not found"); }
-
+            
             // load any plugins in the plugin directory
             var plugins = manager.LoadPlugins(pluginPath);
             if (plugins.Any() == false) { throw new ApplicationException($"no plugins found in assembly at ${exePath}"); }

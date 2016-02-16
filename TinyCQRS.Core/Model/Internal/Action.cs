@@ -11,6 +11,9 @@ namespace TinyCQRS.Core.Model.Internal
         public bool HasResult => GetType().Assembly.GetTypes().Any(t => typeof(IActionResult).IsAssignableFrom(t));
 
         public string Name => GetType().FullName;
+
+        public string Type => GetType().Name;
+
         public string Description { get; set; }
     }
 }
