@@ -9,7 +9,16 @@ namespace TinyCQRS.Core.Model.Handlers
     public abstract class Handler : IHandler
     {
         public string Name => GetType().Name;
-        public string Type { get; set; }
+
+        public string Type
+        {
+            get { return GetType().Name; }
+            set
+            {
+                
+            }
+        }
+
         public string Description { get; set; }
         public bool CanHandle(IAction action)
         {
@@ -21,26 +30,21 @@ namespace TinyCQRS.Core.Model.Handlers
             return candidates.Any();
         }
 
-        public ICqrsResponse Handle(IAction action)
+        public Type GenericHandler { get; set; }
+        public Handler()
         {
-            // find relevent type
-            var classes = GetType().Assembly.GetTypes();
-
-            var candidates = classes.Where(c => c.GetInterfaces().Any(i => i.gener));s
-
-            var handlerType = candidates.FirstOrDefault();
-
-            var concrete = classes.FirstOrDefault(x => x.IsGenericTypeDefinition && x.GetInterfaces().Any(i => i == handlerType));
-
-            if (concrete == null) return new CqrsResponse();
-
-            concrete = concrete.MakeGenericType(action.GetType());
-
-            // instantiate (generic) and handle
-            var instance = Activator.CreateInstance(concrete) as IHandler;
-
-            return instance?.Handle(action) ?? new CqrsResponse();
 
         }
+
+        public ICqrsResponse Handle(IAction action)
+        {
+            var interfaces = GetType().GetInterfaces();
+            var candidates = interfaces.Where(x => x.IsConstructedGenericType
+                                                && x.GetGenericArguments()[0] == action.GetType());
+
+            // find relevent type
+            return new CqrsResponse();
+        }
     }
+    
 }

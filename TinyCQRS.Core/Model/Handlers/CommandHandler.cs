@@ -3,7 +3,10 @@ using TinyCQRS.Core.Interfaces.Objects;
 
 namespace TinyCQRS.Core.Model.Handlers
 {
-    public class CommandHandler : Handler, ICommandHandler { }
+    public class CommandHandler : Handler, ICommandHandler
+    {
+
+    }
 
     public abstract class CommandHandler<T> : CommandHandler, ICommandHandler<T> where T : ICommand
     {

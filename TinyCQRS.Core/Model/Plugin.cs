@@ -75,11 +75,11 @@ namespace TinyCQRS.Core.Model
         }
         #endregion
 
-        // find the appropriate method and execute it
-
         public ICqrsResponse Handle(IAction action)
         {
-            return Handlers.FirstOrDefault(x => x.CanHandle(action))?.Handle(action) ?? new CqrsResponse();
+            var handlers = Handlers.Where(x => x.CanHandle(action));
+
+            return handlers.First().Handle(action);
         }
 
         // abstract constructor

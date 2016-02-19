@@ -5,14 +5,10 @@ namespace TinyCQRS.Core.Model.Handlers
 {
     public abstract class QueryHandler<T, TR> : QueryHandler, IQueryHandler<T, TR> where T : IQuery<T, TR> where TR : class
     {
-        public virtual TR Handle(T query)
-        {
-            return default(TR);
-        }
+        public abstract TR Handle(T query);
     }
 
     public class QueryHandler : Handler, IQueryHandler
     {
-
     }
 }

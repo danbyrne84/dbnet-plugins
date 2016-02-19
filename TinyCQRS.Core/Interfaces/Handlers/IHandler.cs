@@ -5,8 +5,8 @@ namespace TinyCQRS.Core.Interfaces.Handlers
     public interface IHandler
     {
         string Name { get; }
-        string Type { get; set; }
-        string Description { get; set; }
+        string Type { get; }
+        string Description { get; }
 
         bool CanHandle(IAction action);
         ICqrsResponse Handle(IAction action);
