@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using TinyCQRS.Core.Interfaces.Handlers;
 using TinyCQRS.Core.Interfaces.Objects;
 using TinyCQRS.Core.Model.Internal;
@@ -20,6 +21,8 @@ namespace TinyCQRS.Core.Model.Handlers
         }
 
         public string Description { get; set; }
+        public abstract ActionType HandlerType { get; }
+
         public bool CanHandle(IAction action)
         {
             // @todo & typeof is IHandler
@@ -28,22 +31,6 @@ namespace TinyCQRS.Core.Model.Handlers
                                                 && x.GetGenericArguments()[0] == action.GetType());
 
             return candidates.Any();
-        }
-
-        public Type GenericHandler { get; set; }
-        public Handler()
-        {
-
-        }
-
-        public ICqrsResponse Handle(IAction action)
-        {
-            var interfaces = GetType().GetInterfaces();
-            var candidates = interfaces.Where(x => x.IsConstructedGenericType
-                                                && x.GetGenericArguments()[0] == action.GetType());
-
-            // find relevent type
-            return new CqrsResponse();
         }
     }
     

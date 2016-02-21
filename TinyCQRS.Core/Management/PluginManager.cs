@@ -49,12 +49,6 @@ namespace TinyCQRS.Core.Management
             return plugins;
         }
 
-        public void Execute(IAction action)
-        {
-            var plugin = ChoosePluginForAction(action);
-            var response = plugin.Handle(action);
-        }
-
         public IPlugin ChoosePluginForAction(IAction action)
         {
             var capable = Plugins.Where(plugin => plugin.CanHandle(action));

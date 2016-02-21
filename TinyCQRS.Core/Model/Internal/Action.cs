@@ -12,7 +12,8 @@ namespace TinyCQRS.Core.Model.Internal
 
         public string Name => GetType().FullName;
 
-        public string Type => GetType().Name;
+        public abstract ActionType Type { get; set; }
+        public abstract string ReturnType { get; set; }
 
         public string Description { get; set; }
     }

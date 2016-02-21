@@ -1,0 +1,17 @@
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\HomeApiCore\DBNet.Plugins.Example\obj\Debug\DBNet.Plugins.Example.csprojResolveAssemblyReference.cache
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\HomeApiCore\DBNet.Plugins.Example\bin\Debug\DBNet.Plugins.Example.dll
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\HomeApiCore\DBNet.Plugins.Example\bin\Debug\DBNet.Plugins.Example.pdb
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\HomeApiCore\DBNet.Plugins.Example\bin\Debug\DBNet.Plugins.dll
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\HomeApiCore\DBNet.Plugins.Example\bin\Debug\DBNet.Plugins.pdb
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\HomeApiCore\DBNet.Plugins.Example\obj\Debug\DBNet.Plugins.Example.dll
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\HomeApiCore\DBNet.Plugins.Example\obj\Debug\DBNet.Plugins.Example.pdb
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\DBNet.Plugins\DBNet.Plugins.Example\bin\Debug\plugin.json
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\DBNet.Plugins\DBNet.Plugins.Example\bin\Debug\DBNet.Plugins.Example.dll
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\DBNet.Plugins\DBNet.Plugins.Example\bin\Debug\DBNet.Plugins.Example.pdb
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\DBNet.Plugins\DBNet.Plugins.Example\bin\Debug\DBNet.Plugins.dll
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\DBNet.Plugins\DBNet.Plugins.Example\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\DBNet.Plugins\DBNet.Plugins.Example\bin\Debug\DBNet.Plugins.pdb
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\DBNet.Plugins\DBNet.Plugins.Example\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\DBNet.Plugins\DBNet.Plugins.Example\obj\Debug\DBNet.Plugins.Example.csprojResolveAssemblyReference.cache
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\DBNet.Plugins\DBNet.Plugins.Example\obj\Debug\DBNet.Plugins.Example.dll
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\DBNet.Plugins\DBNet.Plugins.Example\obj\Debug\DBNet.Plugins.Example.pdb

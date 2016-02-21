@@ -5,7 +5,14 @@ namespace TinyCQRS.Core.Model.ExecutionUnits
 {
     public class Query<T,TR> : Query, IQuery<T, TR>
     {
-        public string ReturnType => GetType().GetGenericArguments()[1].FullName;
+        public string ReturnType
+        {
+            get
+            {
+                return GetType().GetGenericArguments()[1].FullName;
+            }
+            set { }
+        }
     }
 
     public class Query : Action

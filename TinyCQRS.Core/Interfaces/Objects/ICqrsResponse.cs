@@ -3,5 +3,6 @@
     public interface ICqrsResponse
     {
         bool Success { get; set; }
+        dynamic Response { get; set; }
     }
 }

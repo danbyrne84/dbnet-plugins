@@ -6,6 +6,8 @@ namespace TinyCQRS.Core.Model.Handlers
 {
     public abstract class EventHandler : Handler, IEventHandler
     {
+        public override ActionType HandlerType => ActionType.Event;
+
         public bool CanHandle(IEvent @event)
         {
             return GetType().Assembly.GetTypes()

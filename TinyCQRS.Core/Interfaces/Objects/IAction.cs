@@ -1,4 +1,5 @@
 ﻿using System;
+using TinyCQRS.Core.Model;
 
 namespace TinyCQRS.Core.Interfaces.Objects
 {
@@ -9,7 +10,8 @@ namespace TinyCQRS.Core.Interfaces.Objects
 
 
         string Name { get; }
-        string Type { get; }
+        ActionType Type { get; }
+        string ReturnType { get; set; }
         string Description { get; set; }
 
     }

@@ -1,7 +1,12 @@
 ﻿namespace TinyCQRS.Core.Interfaces.Objects
 {
-    public interface IQuery<T, TR> : IAction
+    public interface IQuery<T, TR> : IQuery
     {
-        string ReturnType { get; }
+        
+    }
+
+    public interface IQuery : IAction
+    {
+
     }
 }

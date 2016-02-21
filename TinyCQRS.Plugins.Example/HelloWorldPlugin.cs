@@ -9,11 +9,5 @@ namespace TinyCQRS.Plugins.Example
         {
             
         }
-
-        public override void Initialize()
-        {
-            // initialization tasks here
-            Console.WriteLine($"{GetType()} - Initialize.");
-        }
     }
 }

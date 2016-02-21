@@ -3,7 +3,7 @@ using TinyCQRS.Core.Model.Internal;
 
 namespace TinyCQRS.Core.Model.ExecutionUnits
 {
-    public class Command : Action, ICommand
+    public abstract class Command : Action, ICommand
     {
 
     }

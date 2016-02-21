@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using TinyCQRS.Core.Interfaces.Objects;
 using TinyCQRS.Core.Model.Handlers;
 using TinyCQRS.Plugins.Example.Datastore;
 using TinyCQRS.Plugins.Example.ExecutionUnits;

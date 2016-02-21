@@ -3,6 +3,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using TinyCQRS.Core.Management;
+using TinyCQRS.Plugins.Example;
+using TinyCQRS.Plugins.Example.ExecutionUnits;
+using TinyCQRS.Plugins.Example.Handlers;
+using static System.Console;
 
 namespace TinyCQRS.TestApp
 {
@@ -24,28 +28,49 @@ namespace TinyCQRS.TestApp
             var plugins = manager.LoadPlugins(pluginPath);
             if (plugins.Any() == false) { throw new ApplicationException($"no plugins found in assembly at ${exePath}"); }
 
-            // initialize them, or check something about them in their manifest first
-            plugins.ForEach(plugin =>
+            // just write out the defined handlers and execution units
+            plugins.ForEach(p =>
             {
-                plugin.Initialize();
+                var handlers = p.Handlers.Any() ? string.Join(",", p.Handlers.Select(x => x.ToString().ToArray())) : "[none defined]";
+                var executionUnits = p.ExecutionUnits.Any() ? string.Join(",", p.ExecutionUnits.Select(x => x.ToString())) : "[none defined]";
 
-                var methods = plugin.ExecutionUnits.ToList();
-                if (!methods.Any()) return;
+                Write($@"
+-------------------------------
+TinyCQRS.TestApp
+Plugin: {p.MetaData.Name}
+-------------------------------
+Handlers: {p.Handlers.Count()}
+_________
+|_>>>
+      {handlers.ToString()}
+Execution Units:
+________________
+|_>>>
+      {executionUnits.ToString()}
+-------------------------------
+Beginning test execution:
 
-                Console.WriteLine("Registered Handlers:");
-                Console.WriteLine(string.Join(",", methods.Select(x => x.ToString()).ToArray()));
-
-                foreach (var action in methods)
-                {
-                    if (plugin.CanHandle(action))
-                    {
-                        var handled = plugin.Handle(action);
-                    }
-                }
-
+");
+                WriteLine(handlers);
             });
 
-            Console.ReadKey();
+            // run some real methods - lets store a name against a user ID and then retrieve it.
+            WriteLine("Instantiating HelloWorldPlugin");
+            var plugin = new HelloWorldPlugin();
+
+            var command = new HelloWorldCommand { UserId = 1, Name = "second test" };
+            WriteLine($"Sending HelloWorldCommand: {command.UserId}, {command.Name}");
+
+            var cmdResult = plugin.Handle(command);
+            WriteLine($"Handled command with result: {cmdResult.Success}" );
+
+            var query = new HelloWorldQuery {UserId = 1};
+            WriteLine($"Sending HelloWorldQuery: {query.UserId}");
+
+            var queryResult = plugin.Handle<HelloWorldQuery, HelloWorldQueryResult>(query);
+            WriteLine($"Handled query with result: {queryResult.Result.UserName}");
+
+            ReadKey();
         }
     }
 }

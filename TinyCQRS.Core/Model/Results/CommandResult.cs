@@ -4,14 +4,16 @@ using TinyCQRS.Core.Interfaces.Results;
 
 namespace TinyCQRS.Core.Model.Results
 {
-    public class CommandResult<T> : ICommandResult<T> where T : ICommand
+    public class CommandResult : ICommandResult
     {
         public bool Success { get; set; }
+        public string Message { get; set; }
         public Guid Reference { get; private set; }
 
-        public CommandResult(bool success)
+        public CommandResult(bool success, string message = null)
         {
             Success = success;
+            Message = message;
         }
     }
 }

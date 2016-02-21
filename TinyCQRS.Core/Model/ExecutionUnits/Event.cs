@@ -3,7 +3,7 @@ using TinyCQRS.Core.Model.Internal;
 
 namespace TinyCQRS.Core.Model.ExecutionUnits
 {
-    public class Event : Action, IEvent
+    public abstract class Event : Action, IEvent
     {
 
     }
