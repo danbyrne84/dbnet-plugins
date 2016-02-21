@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CFCB7D69-92F4-4513-A117-AD8BFF328E7A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TinyCQRS.Core</RootNamespace>
+    <AssemblyName>TinyCQRS.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>dbnet.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SimpleInjector, Version=3.1.2.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.1.2\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Exceptions\PluginInformationMissingException.cs" />
+    <Compile Include="Exceptions\NoHandlersFoundException.cs" />
+    <Compile Include="Exceptions\PluginEntryPointMissingException.cs" />
+    <Compile Include="Interfaces\Handlers\ICommandHandler.cs" />
+    <Compile Include="Interfaces\Handlers\IEventHandler.cs" />
+    <Compile Include="Interfaces\Handlers\IQueryHandler.cs" />
+    <Compile Include="Interfaces\Objects\IAction.cs" />
+    <Compile Include="Interfaces\Objects\ICqrsResponse.cs" />
+    <Compile Include="Interfaces\IPluginManager.cs" />
+    <Compile Include="Model\Action.cs" />
+    <Compile Include="Model\ExecutionUnits\Command.cs" />
+    <Compile Include="Model\ExecutionUnits\Event.cs" />
+    <Compile Include="Model\Handlers\CommandHandlerException.cs" />
+    <Compile Include="Model\Handlers\EventHandler.cs" />
+    <Compile Include="Model\Handlers\CommandHandler.cs" />
+    <Compile Include="Model\Handlers\QueryHandler.cs" />
+    <Compile Include="Model\Internal\Action.cs" />
+    <Compile Include="Model\Handlers\Handler.cs" />
+    <Compile Include="Interfaces\Objects\ICommand.cs" />
+    <Compile Include="Interfaces\Results\ICommandResult.cs" />
+    <Compile Include="Interfaces\Objects\IEvent.cs" />
+    <Compile Include="Interfaces\Handlers\IHandler.cs" />
+    <Compile Include="Interfaces\IPlugin.cs" />
+    <Compile Include="Interfaces\IPluginMetadata.cs" />
+    <Compile Include="Interfaces\Objects\IQuery.cs" />
+    <Compile Include="Interfaces\Results\IQueryResult.cs" />
+    <Compile Include="Model\Internal\CqrsResponse.cs" />
+    <Compile Include="Interfaces\Objects\IHandlerFactory.cs" />
+    <Compile Include="Model\Internal\IActionResult.cs" />
+    <Compile Include="Model\Plugin.cs" />
+    <Compile Include="Model\PluginMetadata.cs" />
+    <Compile Include="Model\Results\CommandResult.cs" />
+    <Compile Include="Model\Results\QueryResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\ExecutionUnits\Query.cs" />
+    <Compile Include="Registration\IPluginRegistrationFactory.cs" />
+    <Compile Include="Dto\Plugin.cs" />
+    <Compile Include="Management\PluginManager.cs" />
+    <Compile Include="Registration\PluginRegistrationFactory.cs" />
+    <Compile Include="Registration\RegistrationException.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="dbnet.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
